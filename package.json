@@ -1,0 +1,23 @@
+{
+  "name": "connext-presentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "vue-loader": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalasoo/connext-presentation.git"
+  },
+  "author": "kalasoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kalasoo/connext-presentation/issues"
+  },
+  "homepage": "https://github.com/kalasoo/connext-presentation#readme"
+}
