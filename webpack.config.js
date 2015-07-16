@@ -4,5 +4,13 @@ module.exports = {
         path: './build',
         filename: 'build.js'
     },
+    module: {
+        loaders: [
+            {
+                test: /\.vue$/,
+                loader: 'vue'
+            }
+        ]
+    },
     devtool: 'source-map'
 }
