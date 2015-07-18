@@ -9651,8 +9651,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(70)
-	module.exports = __webpack_require__(73)
-	module.exports.template = __webpack_require__(76)
+	module.exports = __webpack_require__(74)
+	module.exports.template = __webpack_require__(77)
 
 /***/ },
 /* 70 */
@@ -9664,7 +9664,7 @@
 	var content = __webpack_require__(71);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(72)(content, {});
+	var update = __webpack_require__(73)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -9684,11 +9684,67 @@
 /* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(77)();
-	exports.push([module.id, "body {\n  margin: 0;\n  font-family: 'Hiragino Sans GB', sans-serif; }\n\n.container {\n  max-width: 600px;\n  margin: 0 auto; }\n\nsection {\n  padding: 5em 0; }\n", ""]);
+	exports = module.exports = __webpack_require__(72)();
+	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  height: 100%;\n  margin: 0;\n  font-family: 'Source Code Pro', 'Hiragino Sans GB', sans-serif;\n  font-weight: 300; }\n\nsection {\n  height: 100%;\n  padding: 10%; }\n  section:nth-child(2n) {\n    background-color: rgba(241, 241, 241, 0.5); }\n", ""]);
 
 /***/ },
 /* 72 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -9913,7 +9969,7 @@
 
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9924,89 +9980,46 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _componentsSectionVue = __webpack_require__(74);
+	var _componentsSectionVue = __webpack_require__(75);
 	
 	var _componentsSectionVue2 = _interopRequireDefault(_componentsSectionVue);
 	
+	var sections = [{
+	    title: '我是',
+	    content: '# 阴明'
+	}, {
+	    title: '经历',
+	    content: '### 悲剧'
+	}];
+	
 	exports['default'] = {
 	    replace: false,
-	    data: function data() {}
+	    data: {
+	        sections: sections
+	    },
+	    components: {
+	        'section-view': _componentsSectionVue2['default']
+	    }
 	};
 	module.exports = exports['default'];
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports.template = __webpack_require__(75)
-
-/***/ },
-/* 75 */
-/***/ function(module, exports) {
-
-	module.exports = "";
+	module.exports.template = __webpack_require__(76)
 
 /***/ },
 /* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\"><section>1</section><section>2</section><section>3</section></div>";
+	module.exports = "<h1>{{title}}<div class=\"content\">{{content | marked}}</div></h1>";
 
 /***/ },
 /* 77 */
 /***/ function(module, exports) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-	
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-	
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
+	module.exports = "<section-view v-repeat=\"section: sections\" title=\"section.title\" content=\"section.content\"></section-view>";
 
 /***/ }
 /******/ ]);
