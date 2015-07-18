@@ -1,0 +1,40 @@
+{
+  "name": "connext-presentation",
+  "version": "1.0.0",
+  "description": "Connext Presentation @ Beijing",
+  "main": "index.js",
+  "dependencies": {
+    "marked": "^0.3.3",
+    "vue": "^0.12.7"
+  },
+  "devDependencies": {
+    "babel-core": "^5.7.2",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.14.5",
+    "html-loader": "^0.3.0",
+    "jade": "^1.11.0",
+    "loader-utils": "^0.2.10",
+    "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.2.0",
+    "parse5": "^1.5.0",
+    "sass-loader": "^1.0.2",
+    "style-loader": "^0.12.3",
+    "template-html-loader": "0.0.3",
+    "vue-loader": "^2.0.1",
+    "webpack": "^1.10.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalasoo/connext-presentation.git"
+  },
+  "author": "kalasoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kalasoo/connext-presentation/issues"
+  },
+  "homepage": "https://github.com/kalasoo/connext-presentation#readme"
+}
