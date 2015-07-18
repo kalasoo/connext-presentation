@@ -9684,7 +9684,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(71)();
-	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  height: 100%;\n  margin: 0;\n  font-family: 'Source Code Pro', 'Hiragino Sans GB', sans-serif;\n  font-weight: 300;\n  font-size: 20px;\n  color: #777; }\n\nh1, h2, h3, h4, h5, h6, strong {\n  color: #333;\n  -webkit-font-smoothing: antialiased;\n  text-rendering: optimizeLegibility; }\n\nsection {\n  text-align: center;\n  height: 100%;\n  padding: 10%; }\n  section:nth-child(2n + 1) {\n    background-image: radial-gradient(circle at 50% 50%, rgba(241, 241, 241, 0.1), #ddd); }\n\na {\n  color: #5D94C8;\n  text-decoration: none; }\n\nhr {\n  border: none;\n  height: 2px;\n  width: 30%;\n  margin: 2em auto;\n  background-color: #5D94C8; }\n\n.content {\n  margin: 2em 0; }\n", ""]);
+	exports.push([module.id, "* {\n  box-sizing: border-box; }\n\nhtml {\n  height: 100%; }\n\nbody {\n  height: 100%;\n  margin: 0;\n  font-family: 'Source Code Pro', 'Hiragino Sans GB', sans-serif;\n  font-weight: 300;\n  font-size: 20px;\n  color: #777; }\n  body::-webkit-scrollbar {\n    width: 1em; }\n  body::-webkit-scrollbar-track {\n    background: rgba(119, 119, 119, 0.2); }\n  body::-webkit-scrollbar-thumb {\n    background: #5D94C8; }\n\nh1, h2, h3, h4, h5, h6, strong {\n  color: #333;\n  -webkit-font-smoothing: antialiased;\n  text-rendering: optimizeLegibility; }\n\na {\n  color: #5D94C8;\n  text-decoration: none; }\n", ""]);
 
 /***/ },
 /* 71 */
@@ -9988,7 +9988,47 @@
 	    content: '\n![cover](./images/favicon.ico)\n\n阴明 - [稀土](https://xitu.io) & [掘金](http://gold.xitu.io)\n\n[ming@xitu.io](mailto://ming@xitu.io)\n        \n2015年7月19日\n        '
 	}, {
 	    title: '经历',
-	    content: '\n信息工程 @ 香港中文大学\n\n计算机科学 @ 剑桥大学\n\nResearcher => Developer\n\n------\n\nFounder & Frontend Developer @ GradChef.com\n\n**Founder & Frontend Developer @ xitu.io**\n\n        '
+	    content: '\n信息工程 @ 香港中文大学\n\n计算机科学 @ 剑桥大学\n\nResearcher => Developer\n\n------\n\nFounder & Frontend Developer @ GradChef.com\n\n**Founder & Frontend Developer @ xitu.io**\n\n[more](http://ming.today/timeline)        '
+	}, {
+	    title: 'LAMP',
+	    content: '\n所有人共通的学习经历\n\nLinux / Apache / MySQL / PHP\n\n------\n\n面对一个初学者，这个世界并不友善\n'
+	}, {
+	    title: '信息在爆炸',
+	    background: './images/growth.png',
+	    content: '\n除了层出不穷的框架、知识\n\n在我们面前的，还有难以计数的技术内容\n\n------\n\n> 每 18 - 24 个月，前端开发就难一倍！\n>\n> 深JS\n'
+	}, {
+	    title: '',
+	    background: './images/digg.png',
+	    content: ''
+	}, {
+	    title: '那又如何挖掘这些内容呢？',
+	    background: './images/how.png',
+	    content: ''
+	}, {
+	    title: '',
+	    background: './images/approach.png',
+	    content: ''
+	}, {
+	    title: '当然，还会有「 高玩 」',
+	    content: '高手总是用自定义的模式\n\n![高手](./images/gaoshou.gif)\n'
+	}, {
+	    title: 'Example: Angular.js',
+	    background: './images/progress.png',
+	    content: '\n> 阅读 => 收藏  => 分享 => 审核\n>\n> 用户的行为转化为质量分层的依据'
+	}, {
+	    title: '一个互联网技术内容的图谱',
+	    background: './images/graph.png',
+	    content: '\n> [Angular.js]\n> \n> 关注你最感兴趣的技术分类\n>\n> [Google] [ECMAScript 6] [MVVM]\n> \n> 通过你的行为，推荐最有用的内容\n'
+	}, {
+	    title: '如果我现在再学习 LAMP',
+	    content: '\n我会关注 [PHP] [MySQL] [网站开发] 等分类\n\n------\n\n基于我的阅读、收藏数据，我很快会去接触到\n\n[Laravel] [PostgreSQL] [ORM] 等等相关的知识内容\n'
+	}, {
+	    title: '想想这些信息未来会如何有效地排列，还有点小激动呢',
+	    background: './images/connection.png',
+	    content: ''
+	}, {
+	    title: '这就是「 掘金 」在做的事情',
+	    content: '\n希望它可以早点变成完整体\n\n![进化](./images/evolve.gif)\n\nThanks, Ming\n        '
 	}];
 	
 	exports['default'] = {
@@ -9996,7 +10036,7 @@
 	    data: function data() {
 	        return {
 	            sections: sections,
-	            currentIndex: 0
+	            totalLength: sections.length
 	        };
 	    },
 	    components: {
@@ -10009,31 +10049,66 @@
 /* 74 */
 /***/ function(module, exports) {
 
-	module.exports = "<section-view v-repeat=\"sections\"></section-view>";
+	module.exports = "<section-view v-repeat=\"sections\" pages-length=\"{{totalLength}}\"></section-view>";
 
 /***/ },
 /* 75 */,
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(77)
-	module.exports.template = __webpack_require__(79)
+	__webpack_require__(77)
+	module.exports = __webpack_require__(79)
+	module.exports.template = __webpack_require__(81)
 
 /***/ },
 /* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(78);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(72)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/selector.js?style/sass!./section.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./../../node_modules/vue-loader/selector.js?style/sass!./section.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 78 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(71)();
+	exports.push([module.id, "section {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  height: 100%;\n  padding: 10%;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center center;\n  background-attachment: fixed; }\n  section > .page {\n    opacity: .5;\n    position: absolute;\n    bottom: .5em;\n    right: .5em;\n    transition: opacity 0.3s; }\n    section > .page:hover {\n      opacity: 1; }\n  section img, section video {\n    max-width: 100%; }\n\nhr {\n  border: none;\n  width: 30%;\n  margin: 2em auto;\n  border-bottom: 2px dotted #5D94C8; }\n\nblockquote {\n  font-size: .8em;\n  text-align: left;\n  color: #333;\n  background: #eff4fa;\n  padding: 0.5em 1.5em; }\n\n.title {\n  background: #fff; }\n\n.content {\n  margin: 2em 0; }\n", ""]);
+
+/***/ },
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
-	var marked = __webpack_require__(78);
+	var marked = __webpack_require__(80);
 	module.exports = {
+	    props: ['pagesLength'],
 	    filters: {
 	        marked: marked
 	    }
 	};
 
 /***/ },
-/* 78 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -11312,10 +11387,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 79 */
+/* 81 */
 /***/ function(module, exports) {
 
-	module.exports = "<section><h1>{{title}}</h1><div v-html=\"content | marked\" class=\"content\"></div></section>";
+	module.exports = "<section style=\"{{!!background ? &quot;background-image: url(&quot; + background + &quot;)&quot; : &quot;&quot;}}\"><div class=\"inner\"><h1 class=\"title\">{{title}}</h1><div v-html=\"content | marked\" class=\"content\"></div></div><div class=\"page\">{{$index + 1}}/{{pagesLength}}</div></section>";
 
 /***/ }
 /******/ ]);
